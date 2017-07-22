@@ -1,0 +1,99 @@
+// Import all partials
+@require './_*.styl'
+
+body
+		height 100%
+
+.podpuck
+		display flex
+		min-height 100vh
+		flex-direction row
+
+.menu
+		background #36342f
+		width 15%
+		min-width 250px
+		padding 20px
+
+.content
+		background #3e3b36
+		width 100%
+		flex 1
+		display flex
+		flex-direction column
+		box-shadow -3px 0 3px #292824
+		color #fff
+
+.searchbar
+		background #5a554f
+		height 70px
+		padding 20px
+		display flex
+		align-items center
+		border-bottom 1px solid #292824
+
+.content-inner
+		padding 10px 20px
+		flex 1
+		display flex
+
+.results
+		align-items flex-start
+		
+.results-grid
+		width 100%
+		display flex
+		flex-wrap wrap
+		align-items flex-start
+
+.results-item
+		position relative
+		transition all 0.5s
+		width 260px
+		height 260px
+		margin 4px
+		display flex
+		align-items center
+		justify-content center
+		&:hover
+				.results-item-overlay
+						transition all 0.2s
+						color #fff
+						background rgba(0,0,0,0.7)
+						cursor: pointer
+		img		
+				transition all 0.5s
+				max-width 100%
+				max-height 100%
+		.results-item-load
+				position absolute
+				width 128px
+				height 128px
+				
+.results-item-overlay
+		width 260px
+		height 260px
+		display flex
+		text-align center
+		flex-direction column
+		align-items center
+		justify-content flex-end
+		position absolute
+		top 0
+		left 0
+		color rgba(0,0,0,0)
+		background rgba(0,0,0,0)
+
+.page-load
+		flex 1
+		display flex
+		align-items center
+		justify-content center
+
+.player
+		width 100%
+		display flex
+		flex-direction column
+		align-items center
+		box-shadow 1px 1px 3px rgba(0,0,0,0.8)
+		border-radius 10px
