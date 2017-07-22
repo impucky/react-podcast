@@ -1,7 +1,7 @@
 {
-  "name": "cotd",
+  "name": "react-podcast",
   "version": "0.0.1",
-  "private": true,
+  "homepage": "https://impucky.github.io/react-podcast",
   "devDependencies": {
     "autoprefixer-stylus": "0.10.0",
     "babel-eslint": "^7.1.1",
@@ -15,6 +15,7 @@
     "stylus": "0.54.5"
   },
   "dependencies": {
+    "gh-pages": "^1.0.0",
     "halogen": "^0.2.0",
     "history": "4.2.0",
     "re-base": "2.2.0",
@@ -29,7 +30,9 @@
     "build": "react-scripts build",
     "eject": "react-scripts eject",
     "styles": "stylus -u autoprefixer-stylus ./src/css/style.styl -o ./src/css/style.css",
-    "styles:watch": "stylus -u autoprefixer-stylus -w ./src/css/style.styl -o ./src/css/style.css"
+    "styles:watch": "stylus -u autoprefixer-stylus -w ./src/css/style.styl -o ./src/css/style.css",
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "./node_modules/react-scripts/.eslintrc"
