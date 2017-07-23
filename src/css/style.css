@@ -172,13 +172,22 @@ body {
           flex-direction: row;
 }
 .menu {
-  background: #36342f;
+  background: #2f333d;
   width: 15%;
   min-width: 250px;
-  padding: 20px;
+  padding: 0 20px;
+}
+.menu-logo {
+  font-family: 'Permanent Marker';
+  font-size: 3rem;
+  line-height: 1.5rem;
+  letter-spacing: 0;
+  text-align: center;
+  color: #e06252;
+  text-shadow: 0 4px 0 #80382f, 0 8px 0 #282c34, 4px 0 0 #282c34, 0 -4px 0 #282c34, -4px 0 0 #282c34;
 }
 .content {
-  background: #3e3b36;
+  background: #282c34;
   width: 100%;
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -190,11 +199,10 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  box-shadow: -3px 0 3px #292824;
   color: #fff;
 }
 .searchbar {
-  background: #5a554f;
+  background: #21252b;
   height: 70px;
   padding: 20px;
   display: -webkit-box;
@@ -203,10 +211,29 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-bottom: 1px solid #292824;
+}
+.searchbar input {
+  background: #1d1f23;
+  height: 40px;
+  border: 1px solid #999;
+  transition: 0.2s;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 1.3rem;
+  padding: 0 10px;
+}
+.searchbar input:focus {
+  outline: none;
+  border: 1px solid #e06252;
+}
+.searchbar button {
+  height: 40px;
+  width: 40px;
+  margin-left: 5px;
+  border-radius: 5px;
 }
 .content-inner {
-  padding: 10px 20px;
+  padding: 20px;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -314,4 +341,63 @@ body {
           align-items: center;
   box-shadow: 1px 1px 3px rgba(0,0,0,0.8);
   border-radius: 10px;
+}
+.podcast-single {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.podcast-single-hero {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+.podcast-single-hero img {
+  width: 40%;
+  height: 40%;
+  min-width: 200px;
+  min-height: 200px;
+}
+.podcast-single-hero div {
+  width: 50%;
+  padding: 0 20px;
+}
+.btn-back {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: 20px;
+  top: 80px;
+  background: none;
+  border: none;
+  color: #999;
+  transition: 0.2s;
+}
+.btn-back:hover {
+  color: #fff;
+}
+.episode-list {
+  padding: 0;
+}
+.episode-list li {
+  cursor: pointer;
+  transition: 0.2s;
+  padding: 5px 10px;
+  margin: 0 0 10px 0;
+  background: #2f333d;
+  list-style-type: none;
+}
+.episode-list li:hover {
+  background: #393e4a;
+}
+audio {
+  width: 120%;
 }

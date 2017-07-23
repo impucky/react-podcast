@@ -5,8 +5,8 @@ class Menu extends React.Component {
 	render() {
 		return (
 			<div className="menu">
-				<Player />
-				<h1>Menu</h1>
+				<h1 className="menu-logo">PUCK.FM</h1>
+				<Player playUrl={this.props.playUrl} />
 				{/* Categories, subscriptions etc */}
 			</div>
 		)

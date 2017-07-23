@@ -1,4 +1,5 @@
 import React from 'react';
+const Icon = require('react-fontawesome');
 
 class SearchBar extends React.Component {
 	
@@ -12,15 +13,16 @@ class SearchBar extends React.Component {
 		return (
 			<div className="searchbar">
 				<input 
-					type="text" 
+					type="text"
+					spellCheck="false"
 					placeholder="Search podcasts" 
 					ref={(input) => this.query = input}
 					onKeyPress={this.handleKeyPress}
 				/>
-				<button onClick={() => this.props.search(this.query.value)}>Go</button>
 			</div>
 		)
 	}
 }
 
 export default SearchBar;
+//<button onClick={() => this.props.search(this.query.value)}><Icon name='search'/></button>
