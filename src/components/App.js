@@ -23,7 +23,7 @@ class App extends React.Component {
 		if (query === this.state.search.query && this.state.activePage !== 'search') {
 			this.setState({ activePage: 'search' });
 		}
-		// don't repeat search
+		// don't repeat search or send empty request
 		if (!query || query === this.state.search.query) {
 			return;
 		}
@@ -40,7 +40,8 @@ class App extends React.Component {
 					return results.push({
 						title: item.collectionName,
 						id: item.collectionId,
-						image: item.artworkUrl600,
+						// switch url to https, quick and dirty for now
+						image: item.artworkUrl600.replace('http', 'https').replace('.mzstatic', '-ssl.mzstatic'),
 						feed: item.feedUrl,
 						itunesUrl: item.collectionViewUrl
 					});
@@ -52,7 +53,7 @@ class App extends React.Component {
 
 	openSinglePodcast = (searchData) => {
 		// don't query if podcast is already in state
-		if (this.state.activePodcast && this.state.activePodcast.meta.xmlUrl === searchData.feed) {
+		if (this.state.activePodcast && this.state.activePodcast.meta.title === searchData.title) {
 			this.setState({ activePage: 'podcast' });
 			return;
 		}

@@ -1,5 +1,4 @@
 import React from 'react';
-const Icon = require('react-fontawesome');
 
 class SearchBar extends React.Component {
 	

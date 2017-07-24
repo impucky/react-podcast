@@ -154,15 +154,66 @@ body
 
 .episode-list
 		padding 0
-		li
-				cursor pointer
-				transition 0.2s
-				padding 5px 10px
-				margin 0 0 10px 0
-				background #2f333d
-				list-style-type none
-				&:hover
-						background #393e4a
+
+.episode
+		transition 0.2s
+		padding 5px 20px
+		margin 0 0 10px 0
+		
+		background #2f333d 
+		list-style-type none
+		text-align center
+		&:hover
+				background #393e4a
+
+.episode-header
+		display flex
+		justify-content flex-start
+		align-items center
+		height 2.5em
+
+.episode-play
+		cursor pointer
+		transition 0.2s
+		color #bbb
+		margin 0 10px 0 -5px
+		&:hover
+			color #fff
+		&:active
+				color #999
+				transform scale(0.8)
+
+.episode-date
+		margin-left auto
+
+.episode-actions
+		text-align left
+
+.episode-details
+		text-align left
+		padding 1px
+		&.collapsed
+					height 0
+					opacity 0
+					transition all 0.6s
+					overflow hidden
+
+		&.expanded
+					height auto
+					opacity 1
+					transition all 0.6s
+
+.episode-toggle
+		width 100%
+		transition 0.2s
+		cursor pointer
+		color #999
+		&.up
+				transform scaleY(-1)
+		&.down
+				transform scaleY(1)
+		&:hover
+				color #fff
 
 audio
 		width 120%

@@ -387,16 +387,80 @@ body {
 .episode-list {
   padding: 0;
 }
-.episode-list li {
-  cursor: pointer;
+.episode {
   transition: 0.2s;
-  padding: 5px 10px;
+  padding: 5px 20px;
   margin: 0 0 10px 0;
   background: #2f333d;
   list-style-type: none;
+  text-align: center;
 }
-.episode-list li:hover {
+.episode:hover {
   background: #393e4a;
+}
+.episode-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 2.5em;
+}
+.episode-play {
+  cursor: pointer;
+  transition: 0.2s;
+  color: #bbb;
+  margin: 0 10px 0 -5px;
+}
+.episode-play:hover {
+  color: #fff;
+}
+.episode-play:active {
+  color: #999;
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+}
+.episode-date {
+  margin-left: auto;
+}
+.episode-actions {
+  text-align: left;
+}
+.episode-details {
+  text-align: left;
+  padding: 1px;
+}
+.episode-details.collapsed {
+  height: 0;
+  opacity: 0;
+  transition: all 0.6s;
+  overflow: hidden;
+}
+.episode-details.expanded {
+  height: auto;
+  opacity: 1;
+  transition: all 0.6s;
+}
+.episode-toggle {
+  width: 100%;
+  transition: 0.2s;
+  cursor: pointer;
+  color: #999;
+}
+.episode-toggle.up {
+  -webkit-transform: scaleY(-1);
+          transform: scaleY(-1);
+}
+.episode-toggle.down {
+  -webkit-transform: scaleY(1);
+          transform: scaleY(1);
+}
+.episode-toggle:hover {
+  color: #fff;
 }
 audio {
   width: 120%;

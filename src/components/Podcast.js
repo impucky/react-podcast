@@ -1,22 +1,33 @@
 import React from 'react';
+import Episode from './Episode';
 const Icon = require('react-fontawesome');
 
 class Podcast extends React.Component {	
+	constructor() {
+		super();
+		this.state = {
+			loadedEpisodes: 5,
+		}
+	}
+
+	componentWillMount() {
+		this.renderEpisodes();
+	}
+
+	renderEpisodes = () => {
+		const loaded = this.state.loadedEpisodes;
+		const episodes = this.props.data.entries
+		const episodeList = episodes.slice(0, loaded).map((e) => {
+			return <Episode key={e.date_ms} data={e} playPodcast={this.props.playPodcast} />
+		});
+
+		this.setState({ episodeList, loadedEpisodes: loaded + 5 });
+	};
+
 	render() {
 		const search = this.props.data.search
 		const details = this.props.data.meta;
-		const episodes = this.props.data.entries;
-		const episodeList = episodes.slice(0, 5).map((e) => {
-			const date = new Date(e.date_ms)
-			const dateString = `${date.getMonth()}/${date.getDay()}/${date.getFullYear()}`
-			return (
-				<li key={e.date_ms} onClick={() => this.props.playPodcast(e.enclosures[0].url)}>
-					<h3>{e.title}</h3>
-					<h3>{dateString}</h3>
-					<p>{`${e.description.substr(0, 300)} [...]`}</p>
-				</li>
-			)
-		});
+
 		return (
 			<div className="podcast-single">
 				<button className="btn-back" onClick={() => this.props.openPage('search')}><Icon name='times' size="2x"/></button>
@@ -32,8 +43,9 @@ class Podcast extends React.Component {
 				<div>
 					<h2>Latest Episodes :</h2>
 					<ul className="episode-list">
-						{episodeList}
+						{this.state.episodeList}
 					</ul>
+					<button onClick={this.renderEpisodes}>Load More</button>
 				</div>
 			</div>
 		)
