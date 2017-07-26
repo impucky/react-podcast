@@ -51,7 +51,6 @@ class Player extends React.Component {
 		const pos = e.pageX - bar.offsetParent.offsetLeft;
 		const pct = (pos / bar.offsetWidth) * 100
 		const targetTime = (pct / 100) * audio.duration;
-		console.info('clicked on ', pos, ' thats ', pct, '%, go to ', targetTime)
 		audio.currentTime = targetTime;
 	};
 
