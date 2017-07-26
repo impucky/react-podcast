@@ -175,7 +175,7 @@ body {
   background: #2f333d;
   width: 15%;
   min-width: 250px;
-  padding: 0 20px;
+  padding: 0;
 }
 .menu-logo {
   font-family: 'Permanent Marker';
@@ -328,6 +328,7 @@ body {
           justify-content: center;
 }
 .player {
+  background: #21252b;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -339,8 +340,74 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  box-shadow: 1px 1px 3px rgba(0,0,0,0.8);
-  border-radius: 10px;
+  color: #fff;
+}
+.player-main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px 0;
+  min-height: 220px;
+  text-align: center;
+}
+.player-main img {
+  width: 60%;
+  height: 60%;
+  border-radius: 100%;
+  box-shadow: 1px 1px 5px #21252b;
+  z-index: 1;
+}
+.player-main h4 {
+  margin: 10px 0 0 0;
+}
+.player-main .image-placeholder {
+  min-width: 150px;
+  min-height: 150px;
+  position: absolute;
+  z-index: 0;
+  background: #191c21;
+  border-radius: 100%;
+}
+.player-bar {
+  width: 100%;
+  height: 30px;
+  background: #191c21;
+}
+.player-bar .progress {
+  background: #e06252;
+  min-height: 30px;
+  width: 0;
+  transition: width 0.1s;
+}
+.player-controls {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+.player-controls div {
+  padding: 10px;
+}
+.player-controls .play-pause {
+  transition: 0.1s;
+  width: 48px;
+  padding: 10px;
+}
+.player-controls .play-pause:hover {
+  background: #393e4a;
 }
 .podcast-single {
   display: -webkit-box;

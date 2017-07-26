@@ -2,218 +2,265 @@
 @require './_*.styl'
 
 body
-		height 100%
+    height 100%
 
 .podpuck
-		display flex
-		min-height 100vh
-		flex-direction row
+    display flex
+    min-height 100vh
+    flex-direction row
 
 .menu
-		background #2f333d
-		width 15%
-		min-width 250px
-		padding 0 20px
+    background #2f333d
+    width 15%
+    min-width 250px
+    padding 0
 
 .menu-logo
-		font-family 'Permanent Marker'
-		font-size 3rem
-		line-height 1.5rem
-		letter-spacing 0
-		text-align center
-		color #e06252
-		text-shadow 0 4px 0 #80382f, 0 8px 0 #282c34, 4px 0 0 #282c34, 0 -4px 0 #282c34, -4px 0 0 #282c34
+    font-family 'Permanent Marker'
+    font-size 3rem
+    line-height 1.5rem
+    letter-spacing 0
+    text-align center
+    color #e06252
+    text-shadow 0 4px 0 #80382f, 0 8px 0 #282c34, 4px 0 0 #282c34, 0 -4px 0 #282c34, -4px 0 0 #282c34
 
 .content
-		background #282c34
-		width 100%
-		flex 1
-		display flex
-		flex-direction column
-		color #fff
+    background #282c34
+    width 100%
+    flex 1
+    display flex
+    flex-direction column
+    color #fff
 
 .searchbar
-		background #21252b
-		height 70px
-		padding 20px
-		display flex
-		align-items center
-		input
-				background #1d1f23
-				height 40px
-				border 1px solid #999
-				transition 0.2s
-				border-radius 5px
-				color #fff
-				font-size 1.3rem
-				padding 0 10px
-				&:focus
-						outline none
-						border 1px solid #e06252
-		button
-				height 40px
-				width 40px
-				margin-left 5px
-				border-radius 5px					
+    background #21252b
+    height 70px
+    padding 20px
+    display flex
+    align-items center
+    input
+        background #1d1f23
+        height 40px
+        border 1px solid #999
+        transition 0.2s
+        border-radius 5px
+        color #fff
+        font-size 1.3rem
+        padding 0 10px
+        &:focus
+            outline none
+            border 1px solid #e06252
+    button
+        height 40px
+        width 40px
+        margin-left 5px
+        border-radius 5px					
 
 
 .content-inner
-		padding 20px
-		flex 1
-		display flex
+    padding 20px
+    flex 1
+    display flex
 
 .results
-		align-items flex-start
-		
+    align-items flex-start
+    
 .results-grid
-		width 100%
-		display flex
-		flex-wrap wrap
-		align-items flex-start
+    width 100%
+    display flex
+    flex-wrap wrap
+    align-items flex-start
 
 .results-item
-		position relative
-		transition all 0.5s
-		width 260px
-		height 260px
-		margin 4px
-		display flex
-		align-items center
-		justify-content center
-		&:hover
-				.results-item-overlay
-						transition all 0.2s
-						color #fff
-						background rgba(0,0,0,0.7)
-						cursor pointer
-		img		
-				transition all 0.5s
-				max-width 100%
-				max-height 100%
-		.results-item-load
-				position absolute
-				width 128px
-				height 128px
-				
+    position relative
+    transition all 0.5s
+    width 260px
+    height 260px
+    margin 4px
+    display flex
+    align-items center
+    justify-content center
+    &:hover
+        .results-item-overlay
+            transition all 0.2s
+            color #fff
+            background rgba(0,0,0,0.7)
+            cursor pointer
+    img		
+        transition all 0.5s
+        max-width 100%
+        max-height 100%
+    .results-item-load
+        position absolute
+        width 128px
+        height 128px
+        
 .results-item-overlay
-		width 260px
-		height 260px
-		display flex
-		text-align center
-		flex-direction column
-		align-items center
-		justify-content flex-end
-		position absolute
-		top 0
-		left 0
-		color rgba(0,0,0,0)
-		background rgba(0,0,0,0)
+    width 260px
+    height 260px
+    display flex
+    text-align center
+    flex-direction column
+    align-items center
+    justify-content flex-end
+    position absolute
+    top 0
+    left 0
+    color rgba(0,0,0,0)
+    background rgba(0,0,0,0)
 
 .page-load
-		flex 1
-		display flex
-		align-items center
-		justify-content center
+    flex 1
+    display flex
+    align-items center
+    justify-content center
 
 .player
-		width 100%
-		display flex
-		flex-direction column
-		align-items center
-		box-shadow 1px 1px 3px rgba(0,0,0,0.8)
-		border-radius 10px
+  background #21252b
+  width 100%
+  display flex
+  flex-direction column
+  align-items center
+  color #fff
+
+.player-main
+  display flex
+  flex-direction column
+  align-items center
+  padding 20px 0
+  min-height 220px
+  text-align center
+  img
+    width 60%
+    height 60%
+    border-radius 100%
+    box-shadow 1px 1px 5px #21252b
+    z-index 1
+  h4
+    margin 10px 0 0 0
+
+  .image-placeholder
+    min-width 150px
+    min-height 150px
+    position absolute
+    z-index 0
+    background #191c21
+    border-radius 100%
+
+.player-bar
+  width 100%
+  height 30px
+  background #191c21
+  .progress
+    background #e06252
+    min-height 30px
+    width 0
+    transition width 0.1s
+
+.player-controls
+  width 100%
+  display flex
+  align-items center
+  justify-content flex-start
+  div
+    padding 10px
+  .play-pause
+    transition 0.1s
+    width 48px
+    padding 10px
+    &:hover
+      background #393e4a
 
 .podcast-single
-		display flex
-		flex-direction column
+    display flex
+    flex-direction column
 
 .podcast-single-hero
-		display flex
-		flex-direction row
-		img
-				width 40%
-				height 40%
-				min-width 200px
-				min-height 200px
-		div
-				width 50%
-				padding 0 20px
+    display flex
+    flex-direction row
+    img
+        width 40%
+        height 40%
+        min-width 200px
+        min-height 200px
+    div
+        width 50%
+        padding 0 20px
 
 .btn-back
-		width 40px
-		height 40px
-		position absolute
-		right 20px
-		top 80px
-		background none
-		border none
-		color #999
-		transition 0.2s
-		&:hover
-				color #fff
+    width 40px
+    height 40px
+    position absolute
+    right 20px
+    top 80px
+    background none
+    border none
+    color #999
+    transition 0.2s
+    &:hover
+        color #fff
 
 .episode-list
-		padding 0
+    padding 0
 
 .episode
-		transition 0.2s
-		padding 5px 20px
-		margin 0 0 10px 0
-		
-		background #2f333d 
-		list-style-type none
-		text-align center
-		&:hover
-				background #393e4a
+    transition 0.2s
+    padding 5px 20px
+    margin 0 0 10px 0
+    background #2f333d 
+    list-style-type none
+    text-align center
+    &:hover
+        background #393e4a
 
 .episode-header
-		display flex
-		justify-content flex-start
-		align-items center
-		height 2.5em
+    display flex
+    justify-content flex-start
+    align-items center
+    height 2.5em
 
 .episode-play
-		cursor pointer
-		transition 0.2s
-		color #bbb
-		margin 0 10px 0 -5px
-		&:hover
-			color #fff
-		&:active
-				color #999
-				transform scale(0.8)
+    cursor pointer
+    transition 0.2s
+    color #bbb
+    margin 0 10px 0 -5px
+    &:hover
+      color #fff
+    &:active
+        color #999
+        transform scale(0.8)
 
 .episode-date
-		margin-left auto
+    margin-left auto
 
 .episode-actions
-		text-align left
+    text-align left
 
 .episode-details
-		text-align left
-		padding 1px
-		&.collapsed
-					height 0
-					opacity 0
-					transition all 0.6s
-					overflow hidden
+    text-align left
+    padding 1px
+    &.collapsed
+          height 0
+          opacity 0
+          transition all 0.6s
+          overflow hidden
 
-		&.expanded
-					height auto
-					opacity 1
-					transition all 0.6s
+    &.expanded
+          height auto
+          opacity 1
+          transition all 0.6s
 
 .episode-toggle
-		width 100%
-		transition 0.2s
-		cursor pointer
-		color #999
-		&.up
-				transform scaleY(-1)
-		&.down
-				transform scaleY(1)
-		&:hover
-				color #fff
+    width 100%
+    transition 0.2s
+    cursor pointer
+    color #999
+    &.up
+        transform scaleY(-1)
+    &.down
+        transform scaleY(1)
+    &:hover
+        color #fff
 
 audio
-		width 120%
+    width 120%

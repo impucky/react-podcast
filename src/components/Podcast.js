@@ -18,7 +18,15 @@ class Podcast extends React.Component {
 		const loaded = this.state.loadedEpisodes;
 		const episodes = this.props.data.entries
 		const episodeList = episodes.slice(0, loaded).map((e) => {
-			return <Episode key={e.date_ms} data={e} playPodcast={this.props.playPodcast} />
+			return (
+				<Episode 
+					key={e.date_ms} 
+					data={e} 
+					title={this.props.data.meta.title} 
+					image={this.props.data.search.image} 
+					playPodcast={this.props.playPodcast}
+				/>
+			)
 		});
 
 		this.setState({ episodeList, loadedEpisodes: loaded + 5 });

@@ -13,7 +13,9 @@ class App extends React.Component {
 			activePage: 'default',
 			search: {
 			},
-			playUrl: '' 
+			playData: {
+
+			}
 		}
 	}
 
@@ -71,8 +73,8 @@ class App extends React.Component {
 		});
 	}
 
-	playPodcast = (url) => {
-		this.setState({ playUrl: url });
+	playPodcast = (playData) => {
+		this.setState({ playData });
 	};
 
 	openPage = (page) => {
@@ -90,7 +92,7 @@ class App extends React.Component {
 
 		return (
 			<div className="podpuck">
-				<Menu playUrl={this.state.playUrl} />
+				<Menu playData={this.state.playData} />
 				<div className="content">
 					<SearchBar search={this.searchPodcasts} />
 					<div className="content-inner">

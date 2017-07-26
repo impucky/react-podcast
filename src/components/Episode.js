@@ -13,13 +13,23 @@ class Episode extends React.Component {
 		this.setState({ expanded });
 	};
 
+	handlePlay = (data) => {
+		const playData = {
+			url: data.enclosures[0].url.replace('http', 'https'),
+			title: this.props.title,
+			epTitle: data.title,
+			image: this.props.image
+		};
+		this.props.playPodcast(playData);
+	};
+
 	render() {
 		const data = this.props.data;
 		const dateString = moment(data.date_ms).format('MMMM Do YYYY');
 		const duration = data['itunes:duration']['#'].substring(3, 8);
 		return (
 			<li className="episode">
-				<div className="episode-header" onClick={() => this.props.playPodcast(data.enclosures[0].url)}>
+				<div className="episode-header" onClick={() => this.handlePlay(data)}>
 						<Icon name="play-circle-o" size="2x" className="episode-play" />
 					<h3>
 						{data.title}
