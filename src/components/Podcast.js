@@ -38,7 +38,7 @@ class Podcast extends React.Component {
 
 		return (
 			<div className="podcast-single">
-				<button className="btn-back" onClick={() => this.props.openPage('search')}><Icon name='times' size="2x"/></button>
+				<button className="btn-back" onClick={() => this.props.openPage(this.props.data.prevPage)}><Icon name='times' size="2x"/></button>
 				<div className="podcast-single-hero">
 					<img src={search.image} alt={search.title}/>
 					<div>

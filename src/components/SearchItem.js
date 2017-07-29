@@ -21,7 +21,7 @@ class SearchItem extends React.Component {
 	render() {
 		const data = this.props.data;
 		return (
-			<div className="results-item" onClick={() => this.props.openSingle(data)}>
+			<div className="results-item" onClick={() => this.props.openSingle(data, this.props.prevPage)}>
 				<img src={data.image} alt={data.title} onLoad={this.handleImageLoad} style={this.state.imageStyle} />
 				{this.state.imageStatus}
 				<div className="results-item-overlay">

@@ -15,7 +15,7 @@ class Episode extends React.Component {
 
 	handlePlay = (data) => {
 		const playData = {
-			url: data.enclosures[0].url.replace('http:', 'https:'),
+			url: data.enclosures[0].url,
 			title: this.props.title,
 			epTitle: data.title,
 			image: this.props.image

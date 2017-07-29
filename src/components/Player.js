@@ -9,7 +9,8 @@ class Player extends React.Component {
 			playing: false,
 			time: '00:00 / 00:00',
 			secs: 0,
-			progStyle: { width: '0'}
+			progStyle: { width: '0'},
+			loadStyle: {}
 		}
 	}
 
@@ -28,6 +29,10 @@ class Player extends React.Component {
 
 	displayTime = () => {
 		const audio = this.audioEl;
+		if (!audio.duration) {
+			this.setState({ time: '00:00 / 00:00' });
+			return;
+		}
 		const secs = Math.round(audio.currentTime);
 		this.updateProgress();
 		if (secs === this.state.secs) {
@@ -48,7 +53,7 @@ class Player extends React.Component {
 	scrub = (e) => {
 		const audio = this.audioEl;
 		const bar = this.progBar;
-		const pos = e.pageX - bar.offsetParent.offsetLeft;
+		const pos = e.pageX - bar.offsetLeft;
 		const pct = (pos / bar.offsetWidth) * 100
 		const targetTime = (pct / 100) * audio.duration;
 		audio.currentTime = targetTime;
@@ -58,17 +63,24 @@ class Player extends React.Component {
 		this.audioEl.playbackRate = this.speed.value;
 	};
 
+	handleDurationChange = () => {
+		this.audioEl.play();
+		this.displayTime();
+		if (!this.state.playing) {
+			this.setState({ playing: true });	
+		}
+	};
+
 	render() {
 		const data = this.props.playData;
+		const playerStyle = (this.props.playData.url) ? {opacity: '1'} : {opacity: '0'}
 		return (
-			<div className="player">	
+			<div className="player" style={playerStyle}>	
 				<audio 
 					src={data.url} 
 					ref={(audio) => this.audioEl = audio}
 					onTimeUpdate={this.displayTime}
-					onLoadedMetadata={this.displayTime}
-					onPlay={this.playPause}
-					autoPlay
+					onDurationChange={this.handleDurationChange}
 				>
 					
 				</audio>			
@@ -92,9 +104,9 @@ class Player extends React.Component {
 						{this.state.time}
 					</div>
 					<div className="speed">
-						<select ref={(input) => this.speed = input} onChange={this.updateSpeed}>
+						<select ref={(input) => this.speed = input} onChange={this.updateSpeed} defaultValue="1">
 							<option value="0.75">0.75x</option>
-							<option value="1" selected="selected">1x</option>
+							<option value="1">1x</option>
 							<option value="1.25">1.25x</option>
 							<option value="1.5">1.5x</option>
 							<option value="1.75">1.75x</option>

@@ -5,9 +5,15 @@ class Menu extends React.Component {
 	render() {
 		return (
 			<div className="menu">
-				<h1 className="menu-logo">PUCK.FM</h1>
+				<div className="menu-logo">
+					<h1>PUCK.FM</h1>
+				</div>
+				<ul className="menu-items">
+					<li onClick={() => this.props.openPage('categories')}>
+						<h2>Popular Podcasts</h2>
+					</li>
+				</ul>
 				<Player playData={this.props.playData} />
-				{/* Categories, subscriptions etc */}
 			</div>
 		)
 	}
