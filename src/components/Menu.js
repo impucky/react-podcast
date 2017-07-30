@@ -9,8 +9,11 @@ class Menu extends React.Component {
 					<h1>PUCK.FM</h1>
 				</div>
 				<ul className="menu-items">
-					<li onClick={() => this.props.openPage('categories')}>
-						<h2>Popular Podcasts</h2>
+					<li onClick={() => this.props.openPage('categories')} className={(this.props.activePage === 'categories') ? 'active' : ''}>
+						<h2>POPULAR PODCASTS</h2>
+					</li>
+					<li className={(this.props.activePage === 'subs') ? 'active' : ''}>
+						<h2>SUBSCRIPTIONS</h2>
 					</li>
 				</ul>
 				<Player playData={this.props.playData} />

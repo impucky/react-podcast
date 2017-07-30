@@ -29,16 +29,18 @@ class Podcast extends React.Component {
 			)
 		});
 
-		this.setState({ episodeList, loadedEpisodes: loaded + 5 });
+		this.setState({ episodeList, loadedEpisodes: loaded + 10 });
 	};
 
 	render() {
 		const search = this.props.data.search
 		const details = this.props.data.meta;
-
+		let showLoadMore = ((this.state.loadedEpisodes - 10) >= this.props.data.entries.length) ? false : true;
 		return (
 			<div className="podcast-single">
-				<button className="btn-back" onClick={() => this.props.openPage(this.props.data.prevPage)}><Icon name='times' size="2x"/></button>
+				<button className="btn btn-back" onClick={() => this.props.openPage(this.props.data.prevPage)}>
+					<Icon name='times' size="2x"/>
+				</button>
 				<div className="podcast-single-hero">
 					<img src={search.image} alt={search.title}/>
 					<div>
@@ -53,7 +55,13 @@ class Podcast extends React.Component {
 					<ul className="episode-list">
 						{this.state.episodeList}
 					</ul>
-					<button onClick={this.renderEpisodes}>Load More</button>
+					<button 
+						className="btn btn-dots"
+						onClick={this.renderEpisodes} 
+						style={(showLoadMore) ? {} : {display: 'none'}}
+					>
+						<Icon name='ellipsis-h' size="2x"/>
+					</button>
 				</div>
 			</div>
 		)

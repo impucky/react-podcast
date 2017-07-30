@@ -1,0 +1,119 @@
+.player
+	transition opacity 0.5s
+	margin-top 20px
+	background #21252b
+	width 100%
+	display flex
+	flex-direction column
+	align-items center
+	color #fff
+
+.player-main
+	display flex
+	flex-direction column
+	align-items center
+	padding 20px 0
+	min-height 220px
+	text-align center
+	img
+		width 60%
+		height 60%
+		border-radius 100%
+		box-shadow 1px 1px 5px #21252b
+		z-index 1
+	h4
+		margin 10px 0 0 0
+
+	.image-placeholder
+		min-width 138px
+		min-height 138px
+		position absolute
+		z-index 0
+		background #191c21
+		border-radius 100%
+
+.player-bar
+	width 100%
+	height 30px
+	background #191c21
+	position relative
+	cursor pointer
+	.progress
+		background #e06252
+		min-height 30px
+		width 0
+		transition width 0.1s
+	.time
+		width 100%
+		position absolute
+		top 4px
+		text-align center
+		user-select none
+		span
+			font-size 1.2rem
+
+.player-controls
+	cursor pointer
+	user-select none
+	width 100%
+	display flex
+	align-items center
+	justify-content flex-start
+	.play-pause
+		transition 0.1s
+		width 48px
+		padding 10px
+		span
+			width 48px
+		&:hover
+			background #393e4a
+	.speed
+		:first-child
+			font-size 0.7rem
+		width 48px
+		padding 10px
+		display flex
+		flex-direction column
+		align-items center
+		color #fff
+		&:hover
+			background #393e4a
+	.volume
+		padding 10px
+		cursor default
+		display flex
+		align-items center
+		span
+			font-size 1.2rem
+			border-radius 5px
+			cursor pointer
+			width 24px
+			padding 5px 0 5px 2px
+			margin-right 5px
+			&:hover
+				background #393e4a
+
+
+.slider
+	width 115px
+.rangeslider
+	position: relative;
+	background: #1d1f23;
+	-ms-touch-action: none;
+	touch-action: none;
+	height 9px
+	border-radius 25px
+	.rangeslider__handle
+		background: #fff;
+		cursor: pointer;
+		position: absolute;
+		top -2px
+		width: 14px;
+		height: 14px;
+		border-radius: 25px;
+	.rangeslider__fill
+		height: 9px;
+		background-color: #e06252
+		border-radius: 50px;
+		transform translateX(2px)
+

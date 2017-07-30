@@ -26,14 +26,15 @@ class Categories extends React.Component {
 
 	render() {
 		const categories = this.props.data;
+		let loaded = (categories.length === 16) ? true : false;
 		return (
-			<div>
-				<h1>Top podcasts on Itunes</h1>
-				{(categories.length === 16) 
+			<div className={(loaded) ? "" : "page-load"}>
+				{(loaded) 
 				? categories.sort(this.sortCategories).map(this.renderCategories)
 				: <Loader color="#fff" size="32px" />
 				}
 			</div>
+			
 		)
 	}
 }

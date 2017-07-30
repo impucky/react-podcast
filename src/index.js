@@ -6,7 +6,7 @@ import WebFont from 'webfontloader';
 
 WebFont.load({
   google: {
-    families: ['Permanent Marker', 'sans-serif']
+    families: ['Permanent Marker', 'Roboto']
   }
 });
 

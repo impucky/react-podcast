@@ -121,6 +121,7 @@ class App extends React.Component {
 				id: item.collectionId,
 				// switch url to https, quick and dirty for now
 				image: item.artworkUrl600.replace('http', 'https').replace('.mzstatic', '-ssl.mzstatic'),
+				thumb: item.artworkUrl100.replace('http', 'https').replace('.mzstatic', '-ssl.mzstatic'),
 				feed: item.feedUrl,
 				itunesUrl: item.collectionViewUrl
 			});
@@ -140,7 +141,7 @@ class App extends React.Component {
 
 		return (
 			<div className="podpuck">
-				<Menu playData={this.state.playData} openPage={this.openPage} />
+				<Menu playData={this.state.playData} openPage={this.openPage} activePage={this.state.activePage} />
 				<div className="content">
 					<SearchBar search={this.searchPodcasts} />
 					<div className="content-inner">

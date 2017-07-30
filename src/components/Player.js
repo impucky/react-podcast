@@ -1,6 +1,7 @@
 import React from 'react';
 import Icon from 'react-fontawesome';
 import moment from 'moment';
+import Slider from 'react-rangeslider'
 
 class Player extends React.Component {
 	constructor() {
@@ -8,9 +9,14 @@ class Player extends React.Component {
 		this.state = {
 			playing: false,
 			time: '00:00 / 00:00',
+			speed: 1,
 			secs: 0,
+			volume: 1,
+			oldVolume: 1,
 			progStyle: { width: '0'},
-			loadStyle: {}
+			loadStyle: {},
+			volumeIcon: 'volume-up',
+			muted: false
 		}
 	}
 
@@ -33,13 +39,15 @@ class Player extends React.Component {
 			this.setState({ time: '00:00 / 00:00' });
 			return;
 		}
+		const hourDisplay = (audio.duration >= 3600) ? 'HH:' : '';
+		const formatStr = `${hourDisplay}mm:ss`;
 		const secs = Math.round(audio.currentTime);
 		this.updateProgress();
 		if (secs === this.state.secs) {
 			return;
 		}
-		const ct = moment.utc(Math.round(audio.currentTime) * 1000).format("mm:ss");
-		const duration = moment.utc(Math.round(audio.duration) * 1000).format("mm:ss");
+		const ct = moment.utc(Math.round(audio.currentTime) * 1000).format(formatStr);
+		const duration = moment.utc(Math.round(audio.duration) * 1000).format(formatStr);
 		const time = `${ct} / ${duration}`;
 		this.setState({ time, secs });
 	};
@@ -60,14 +68,37 @@ class Player extends React.Component {
 	};
 
 	updateSpeed = () => {
-		this.audioEl.playbackRate = this.speed.value;
+		const speed = (this.state.speed === 2) ? 0.75 : this.state.speed + 0.25;
+		this.setState({ speed });
+		this.audioEl.playbackRate = speed;
+	};
+
+	updateVolume = (volume) => {
+		let newIcon = 'volume-down';
+		if (volume === 0) newIcon = 'volume-off';
+		if (volume >= 0.5) newIcon = 'volume-up';
+		this.audioEl.volume = volume;
+		this.setState({ volume, oldVolume: volume, volumeIcon: newIcon });
 	};
 
 	handleDurationChange = () => {
 		this.audioEl.play();
+		console.log(this.audioEl.playbackRate)
 		this.displayTime();
 		if (!this.state.playing) {
 			this.setState({ playing: true });	
+		}
+	};
+
+	handleMute = () => {
+		const oldVolume = this.state.oldVolume
+		const newIcon = (oldVolume >= 0.5) ? 'volume-up' : 'volume-down';
+		if (!this.state.muted) {
+			this.audioEl.volume = 0;
+			this.setState({ volume: 0, muted:true, volumeIcon:'volume-off' });
+		} else {
+			this.audioEl.volume = oldVolume;
+			this.setState({ volume: oldVolume, muted:false, volumeIcon: newIcon});
 		}
 	};
 
@@ -92,6 +123,9 @@ class Player extends React.Component {
 				</div>
 				<div className="player-bar" onClick={(e) => this.scrub(e)} ref={(bar) => this.progBar = bar}>
 					<div className="progress" style={this.state.progStyle}></div>
+					<div className="time">
+						<span>{this.state.time}</span>
+					</div>
 				</div>
 				<div className="player-controls">
 					<div className="play-pause">
@@ -99,21 +133,28 @@ class Player extends React.Component {
 							<Icon name="pause" size="2x" onClick={this.playPause} />
 							: <Icon name="play" size="2x" onClick={this.playPause} />
 						}
+					</div>	
+					<div className="speed" onClick={this.updateSpeed}>
+						<span>SPEED</span>
+						<span>{this.state.speed + 'x'}</span>
 					</div>
-					<div className="time">
-						{this.state.time}
-					</div>
-					<div className="speed">
-						<select ref={(input) => this.speed = input} onChange={this.updateSpeed} defaultValue="1">
-							<option value="0.75">0.75x</option>
-							<option value="1">1x</option>
-							<option value="1.25">1.25x</option>
-							<option value="1.5">1.5x</option>
-							<option value="1.75">1.75x</option>
-							<option value="2">2x</option>
-						</select>
+					<div className="volume">
+						<Icon name={this.state.volumeIcon} onClick={this.handleMute} />
+						<div className="slider">
+							<Slider
+								min={0}
+								max={1}
+								step={0.05}
+								value={this.state.volume}
+								onChange={this.updateVolume}
+								tooltip={false}
+							/>
+						</div>
 					</div>
 				</div>
+					<div className="slider">
+						
+					</div>
 			</div>
 		)
 	}
